@@ -1,0 +1,31 @@
+<h1>Listing actors</h1>
+<%= render 'search' %>
+<table>
+  <tr>
+    <th>Image</th>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Alias</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @actors.each do |actor| %>
+  <tr>
+    <td><%= image_tag actor.actor_image.thumb.url %></td>
+    <td><%= actor.name %></td>
+    <td><%= actor.age %></td>
+    <td><%= actor.nick_name %></td>
+    <td><%= link_to 'Show', actor %></td>
+    <% if can? :create, Character %>
+    <td><%= link_to 'Edit', edit_actor_path(actor) %></td>
+    <td><%= link_to 'Destroy', actor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <% end %>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Actor', new_actor_path %>

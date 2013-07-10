@@ -1,0 +1,15 @@
+<div class="search">
+ <%= search_form_for @q, url: search_actors_path, html: {method: :post}  do |f| %>
+      <p><%= f.label :name_start, 'Actor Search:' %><%= f.text_field :name_start %>   <%= f.submit %></p>
+  <% end %>
+</div>
+<div class="search">
+ <%= search_form_for @q, url: search_movies_path, html: {method: :post}  do |f| %>
+      <p><%= f.label :name_start, 'Movie Search:' %><%= f.text_field :name_start %>   <%= f.submit %></p>
+  <% end %>
+</div>
+<div class="search">
+ <%= search_form_for @q, url: search_characters_path, html: {method: :post}  do |f| %>
+      <p><%= f.label :name_start, 'Character Search:' %><%= f.text_field :name_start %>   <%= f.submit %></p>
+  <% end %>
+</div>

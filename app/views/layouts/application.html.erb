@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CookbookApp</title>
+ <link rel="stylesheet" type="text/css" href="../assets/fonts/font.css" />
+  <link rel="stylesheet" type="text/css" href="../assets/fonts/font2.css" />
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+     <p class="title">WDI IMDB<p>
+<div class="header">
+        <div class="navbar">
+        <div class="navbar-inner">
+          <ul class="nav">
+          <li class="active"><a href="/">Home</a></li>
+          <li><%=link_to('Movies', movies_path) %></li>
+          <li><%=link_to('Actors', actors_path) %></li>
+          <li><%=link_to('Characters', characters_path) %></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+<div class='background'>
+</div>
+<div class="container">
+
+  <div class="row">
+
+
+    <div class="span12">
+      <p class='login'>
+            <% if current_user %>
+            <p class="greeting">hello, <%= current_user.email %></p>
+            <%= link_to 'Logout', session_path(session), method: :delete, data: {confirm: 'Are you sure?' } %>
+            <% else %>
+                <% if params[:action] != 'new' && params[:controller] != 'users'  %>
+                  <%= link_to 'Sign Up', new_user_path %>
+                  <br>
+                <%= link_to 'Login', new_session_path %>
+                <br>
+                <% else %>
+                <%= link_to 'Login', new_session_path %>
+                <br>
+                <% end %>
+            <% end %>
+          </p>
+<% flash.each do |name, message| %>
+          <div class='flash-message flash-message-<%=name%>'>
+          <%= message %>
+          </div>
+          <% end %>
+<%= yield %>
+
+</div>
+  </div>
+</div>
+</body>
+<footer>
+  <div class="footer">
+  </div>
+</footer>

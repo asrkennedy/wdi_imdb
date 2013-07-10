@@ -1,0 +1,32 @@
+<h1>Listing characters</h1>
+<%= render 'search' %>
+<table>
+  <tr>
+    <th>Image</th>
+    <th>Name</th>
+    <th>Gender</th>
+    <th>Age</th>
+    <th>Description</th>
+
+  </tr>
+
+<% @characters.each do |character| %>
+  <tr>
+    <td><%= image_tag character.character_image.thumb.url %></td>
+    <td><%= character.name %></td>
+    <td><%= character.gender %></td>
+    <td><%= character.age %></td>
+    <td><%= character.description %></td>
+    <td><%= link_to 'Show', character %></td>
+    <% if can? :create, Character %>
+    <td><%= link_to 'Edit', edit_character_path(character) %></td>
+    <td><%= link_to 'Destroy', character, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <% end %>
+<% end %>
+</table>
+
+<br />
+<%= link_to 'New Character', new_character_path %>
+
+
