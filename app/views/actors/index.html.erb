@@ -14,10 +14,9 @@
 <% @actors.each do |actor| %>
   <tr>
     <td><%= image_tag actor.actor_image.thumb.url %></td>
-    <td><%= actor.name %></td>
+    <td><%= link_to actor.name, actor_path(actor)%></td>
     <td><%= actor.age %></td>
     <td><%= actor.nick_name %></td>
-    <td><%= link_to 'Show', actor %></td>
     <% if can? :create, Character %>
     <td><%= link_to 'Edit', edit_actor_path(actor) %></td>
     <td><%= link_to 'Destroy', actor, method: :delete, data: { confirm: 'Are you sure?' } %></td>

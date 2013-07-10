@@ -32,7 +32,7 @@
 <p>
   <b>Actors:</b>
   <% @movie.actors.each do |actor| %>
-  <%= link_to actor.name, actor_path(actor) %>
+  <%= link_to actor.name, actor_path(actor) %> -
   <% end %>
   <br>
 </p>
@@ -45,5 +45,7 @@
   <br>
 </p>
 
+<% if can? :create, Actor%>
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
 <%= link_to 'Back', movies_path %>
+<% end %>

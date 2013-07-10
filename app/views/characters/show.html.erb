@@ -24,6 +24,23 @@
   <%= @character.description %>
 </p>
 
+<p>
+  <b>Actors:</b>
+  <% @character.actors.each do |actor| %>
+  <%= link_to actor.name, actor_path(actor) %> -
+  <% end %>
+  <br>
+</p>
 
+<p>
+  <b>Movies:</b>
+  <% @character.movies.each do |movie| %>
+  <%= link_to movie.name, movie_path(movie) %>
+  <% end %>
+  <br>
+</p>
+
+<% if can? :create, Actor%>
 <%= link_to 'Edit', edit_character_path(@character) %> |
 <%= link_to 'Back', characters_path %>
+<% end %>
